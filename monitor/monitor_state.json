@@ -1,0 +1,59 @@
+{
+  "last_check": "2026-06-08T12:11:14.188417",
+  "last_price": 62876.96875,
+  "last_rsi": 14.097928308981452,
+  "last_signals": [
+    "RSI\u6781\u5ea6\u8d85\u5356",
+    "\u63a5\u8fd1\u5e03\u6797\u5e26\u4e0b\u8f68",
+    "MACD\u67f1\u72b6\u56fe\u6536\u655b",
+    "\u968f\u673a\u6307\u6807\u8d85\u5356",
+    "\u968f\u673a\u6307\u6807\u91d1\u53c9",
+    "ADX\u5f3a\u8d8b\u52bf"
+  ],
+  "alert_sent": [],
+  "new_signals_log": [
+    {
+      "time": "2026-06-08T11:31:49.086032",
+      "signals": [
+        "RSI\u6781\u5ea6\u8d85\u5356",
+        "\u63a5\u8fd1\u5e03\u6797\u5e26\u4e0b\u8f68",
+        "MACD\u67f1\u72b6\u56fe\u6536\u655b"
+      ]
+    },
+    {
+      "time": "2026-06-08T11:45:30.970866",
+      "signals": [
+        "\u968f\u673a\u6307\u6807\u91d1\u53c9",
+        "\u63a5\u8fd1\u652f\u6491\u4f4d"
+      ]
+    }
+  ],
+  "signal_history": [
+    {
+      "time": "2026-06-08T13:37:20.169681",
+      "price": 62524.87890625,
+      "signals": [
+        "RSI\u6781\u5ea6\u8d85\u5356",
+        "\u4e25\u91cd\u8d85\u8dcc",
+        "\u63a5\u8fd1\u5e03\u6797\u5e26\u4e0b\u8f68",
+        "MACD\u67f1\u72b6\u56fe\u6536\u655b",
+        "\u968f\u673a\u6307\u6807\u8d85\u5356",
+        "\u968f\u673a\u6307\u6807\u91d1\u53c9",
+        "ADX\u5f3a\u8d8b\u52bf"
+      ]
+    },
+    {
+      "time": "2026-06-08T14:13:30.631686",
+      "price": 62876.96875,
+      "signals": [
+        "RSI\u6781\u5ea6\u8d85\u5356",
+        "\u63a5\u8fd1\u5e03\u6797\u5e26\u4e0b\u8f68",
+        "MACD\u67f1\u72b6\u56fe\u6536\u655b",
+        "\u968f\u673a\u6307\u6807\u8d85\u5356",
+        "\u968f\u673a\u6307\u6807\u91d1\u53c9",
+        "ADX\u5f3a\u8d8b\u52bf"
+      ]
+    }
+  ],
+  "last_check_time": "2026-06-08T14:13:30.631656"
+}

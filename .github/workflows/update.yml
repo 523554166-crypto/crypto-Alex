@@ -1,0 +1,53 @@
+name: 比特币监控自动更新
+
+on:
+  schedule:
+    # 每天北京时间 09:00 和 22:00 运行
+    # cron使用UTC时间，北京时间=UTC+8
+    - cron: '1 1 * * *'  # 北京时间 09:00 = UTC 01:00
+    - cron: '14 14 * * *'  # 北京时间 22:00 = UTC 14:00
+  workflow_dispatch:  # 允许手动触发
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    
+    steps:
+    - name: 检出代码
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0  # 获取完整历史以便推送
+        
+    - name: 设置Python环境
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+        
+    - name: 安装依赖
+      run: |
+        pip install yfinance pandas flask numpy
+        
+    - name: 运行监控脚本
+      run: |
+        cd scripts
+        python monitor_bitcoin_ultimate.py
+        
+    - name: 生成仪表盘
+      run: |
+        cd scripts
+        python generate_dashboard.py
+        
+    - name: 提交更新
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add -A
+        git diff --staged --quiet || (git commit -m "自动更新: $(date +'%Y-%m-%d %H:%M')" && git push)
+        
+    - name: 部署到CloudStudio
+      run: |
+        echo "部署完成，访问地址: https://你的CloudStudio地址"
+        # 这里可以添加自动部署到CloudStudio的命令
+        # 需要使用CloudStudio API
