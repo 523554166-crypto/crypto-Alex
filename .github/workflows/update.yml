@@ -1,0 +1,45 @@
+name: 比特币监控自动更新
+
+on:
+  schedule:
+    - cron: '0 1 * * *'
+    - cron: '0 14 * * *'
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    
+    steps:
+    - name: 检出代码
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+        
+    - name: 设置Python环境
+      uses: actions/setup-python@v5
+      with:
+        python-version: '3.11'
+        
+    - name: 安装依赖
+      run: pip install yfinance pandas numpy
+        
+    - name: 运行监控脚本
+      run: cd scripts && python monitor_bitcoin_ultimate.py
+        
+    - name: 生成仪表盘
+      run: cd scripts && python generate_dashboard.py
+        
+    - name: 复制到docs目录
+      run: |
+        cp dashboard/dashboard.html docs/index.html
+        cp dashboard/dashboard_data.json docs/ || true
+        
+    - name: 提交并推送
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add -A
+        git diff --staged --quiet || (git commit -m "自动更新: $(date +'%Y-%m-%d %H:%M')" && git push)
