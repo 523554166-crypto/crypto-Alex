@@ -2,9 +2,9 @@ name: 比特币监控自动更新
 
 on:
   schedule:
-    - cron: '0 1 * * *'
-    - cron: '0 14 * * *'
-  workflow_dispatch:
+    - cron: '0 1 * * *'   # 北京时间 09:00 = UTC 01:00
+    - cron: '0 14 * * *'  # 北京时间 22:00 = UTC 14:00
+  workflow_dispatch:  # 允许手动触发
 
 jobs:
   update:
@@ -31,11 +31,6 @@ jobs:
         
     - name: 生成仪表盘
       run: cd scripts && python generate_dashboard.py
-        
-    - name: 复制到docs目录
-      run: |
-        cp dashboard/dashboard.html docs/index.html
-        cp dashboard/dashboard_data.json docs/ || true
         
     - name: 提交并推送
       run: |
